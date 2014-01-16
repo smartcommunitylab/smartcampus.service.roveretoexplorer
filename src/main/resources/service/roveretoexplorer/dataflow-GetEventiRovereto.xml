@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataflow
+xmlns="http://www.example.org/mml-schema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.example.org/mml-schema mml-schema.xsd ">
+
+	<variable name="eventi" type="String"/>
+	<variable name="links" type="List"/>
+	
+	<httpConnector name="connector" method="GET" encoding="UTF-8"/>
+	
+	<connect name="c1" connector="connector" outputVar="eventi" transformer="string">
+		<properties>
+			<property name="url">
+				<value>"http://www2.comune.rovereto.tn.it/servizionline/extra/json_sito/event/"</value>
+			</property>
+		</properties>
+	</connect>		
+
+	<script outputVar="output">
+		<className>eu.trentorise.smartcampus.service.roveretoexplorer.scripts.RoveretoExplorerScript</className>
+		<method>extractData</method>
+		<variables>
+			<value>eventi</value>
+		</variables>		
+	</script>		
+	
+</dataflow>

@@ -1,0 +1,26 @@
+package eu.trentorise.smartcampus.service.roveretoexplorer.data.message;
+
+import "core.proto";
+
+message EventoRovereto {
+ required string id = 1;
+ required string titolo = 2;
+ required string descrizione = 3;
+ optional string image = 4;
+ optional int64 fromTime = 5;
+ optional int64 toTime = 6;
+ optional double lat = 7;
+ optional double lon = 8;
+ required Address indirizzo = 9;
+ required string url = 10;
+ required string tipo = 11;
+ required string fonte = 12;
+ required string whenWhere = 13;
+}
+
+message Address {
+optional string place = 1;
+ optional string street = 2;
+ optional string town = 3;
+ }
+

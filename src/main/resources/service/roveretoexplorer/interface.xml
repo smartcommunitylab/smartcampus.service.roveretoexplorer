@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service-definition xmlns="http://www.example.org/interface-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/interface-schema ../interface-schema.xsd ">
+	<interface serviceURI="smartcampus.service.roveretoexplorer">
+		<operation name="GetEventiRovereto" storable="true">
+			<output type="eu.trentorise.smartcampus.service.roveretoexplorer.data.message.Roveretoexplorer$EventoRovereto" repeated="true" />
+		</operation>
+		
+	</interface>
+
+	<implementation package="eu.trentorise.smartcampus.service.roveretoexplorer">
+		<operationImpl name="GetEventiRovereto"/>
+	</implementation>	
+	
+</service-definition>
