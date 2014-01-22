@@ -12,14 +12,14 @@ message EventoRovereto {
  optional double lat = 7;
  optional double lon = 8;
  required Address indirizzo = 9;
- required string url = 10;
+ required string websiteUrl = 10;
  required string tipo = 11;
  required string fonte = 12;
  required string whenWhere = 13;
 }
 
 message Address {
-optional string place = 1;
+ optional string place = 1;
  optional string street = 2;
  optional string town = 3;
  }

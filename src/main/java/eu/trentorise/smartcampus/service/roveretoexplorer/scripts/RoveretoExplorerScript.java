@@ -106,7 +106,7 @@ public class RoveretoExplorerScript {
 			String descr = shortDescription + "\n" + info;
 			builder.setDescrizione(descr);
 			builder.setTitolo(titolo);
-			builder.setUrl(url);
+			builder.setWebsiteUrl(url);
 			builder.setFonte(fonte);
 			builder.setTipo(tipo);
 			
