@@ -76,6 +76,9 @@
 							<methods>
 								<method>
 									<methodName>GetEventiRovereto</methodName>
+									<defaultParameters>
+										<parameters />
+									</defaultParameters>
 									<statusParameters>
 										<storable>true</storable>
 										<automaticRefresh>true</automaticRefresh>
