@@ -52,7 +52,17 @@ public class RoveretoExplorerScript {
 			long from = 1000 * Long.parseLong((String) ((Map) part.get("from_time")).get("value"));
 			long to = 1000 * Long.parseLong((String) ((Map) part.get("to_time")).get("value"));
 			String gps = (String) ((Map) part.get("gps")).get("value");
-			String tipo = (String)((Map) ((Map) part.get("tipo_evento")).get("value")).get("objectName");
+			
+			Object tipoEvento = ((Map)part.get("tipo_evento")).get("value");
+			List<String> tipi = new ArrayList<String>();
+			if (tipoEvento instanceof Map) {
+				tipi.add((String)((Map)tipoEvento).get("objectName"));
+			} else if (tipoEvento instanceof List) {
+				for (Object te: (List)tipoEvento) {
+					tipi.add((String)(((Map)te)).get("objectName"));
+				}
+			}
+			
 			String fonte = (String) ((Map) part.get("fonte")).get("value");
 			
 			String loc[] = gps.split("\\|");
@@ -108,7 +118,7 @@ public class RoveretoExplorerScript {
 			builder.setTitolo(titolo);
 			builder.setWebsiteUrl(url);
 			builder.setFonte(fonte);
-			builder.setTipo(tipo);
+			builder.addAllTipo(tipi);
 			
 //			Contacts.Builder cb = Contacts.newBuilder();
 //			cb.setEmail("");

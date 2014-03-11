@@ -13,7 +13,7 @@ message EventoRovereto {
  optional double lon = 8;
  required Address indirizzo = 9;
  required string websiteUrl = 10;
- required string tipo = 11;
+ repeated string tipo = 11;
  required string fonte = 12;
  required string whenWhere = 13;
 }
