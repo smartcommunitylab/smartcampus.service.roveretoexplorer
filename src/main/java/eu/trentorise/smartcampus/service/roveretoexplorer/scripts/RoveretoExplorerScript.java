@@ -51,6 +51,9 @@ public class RoveretoExplorerScript {
 			String info = (String) ((Map) part.get("informazioni")).get("value");
 			long from = 1000 * Long.parseLong((String) ((Map) part.get("from_time")).get("value"));
 			long to = 1000 * Long.parseLong((String) ((Map) part.get("to_time")).get("value"));
+			if (to < from) {
+				to = from;
+			}
 			String gps = (String) ((Map) part.get("gps")).get("value");
 			
 			Object tipoEvento = ((Map)part.get("tipo_evento")).get("value");
