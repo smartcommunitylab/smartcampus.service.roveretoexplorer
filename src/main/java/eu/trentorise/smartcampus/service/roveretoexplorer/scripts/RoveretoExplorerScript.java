@@ -54,8 +54,26 @@ public class RoveretoExplorerScript {
 			if (to < from) {
 				to = from;
 			}
-			String gps = (String) ((Map) part.get("gps")).get("value");
-			
+			double lat = 0;
+			double lon = 0;
+			String indirizzo = "";
+			Object gpsObj = ((Map) part.get("gps")).get("value");
+			if ((gpsObj instanceof String)) {
+				String gps = (String) gpsObj;
+				String loc[] = gps.split("\\|");
+				
+				indirizzo = loc[3].replace("#", "");
+				
+				try {
+					lat = Double.parseDouble(loc[1].replace("#", ""));
+				} catch (NumberFormatException e) {
+				}
+				try {
+					lon = Double.parseDouble(loc[2].replace("#", ""));
+				} catch (NumberFormatException e) {
+				}			
+			}
+				
 			Object tipoEvento = ((Map)part.get("tipo_evento")).get("value");
 			List<String> tipi = new ArrayList<String>();
 			if (tipoEvento instanceof Map) {
@@ -66,22 +84,8 @@ public class RoveretoExplorerScript {
 				}
 			}
 			
-			String fonte = (String) ((Map) part.get("fonte")).get("value");
-			
-			String loc[] = gps.split("\\|");
-			
-			String indirizzo = loc[3].replace("#", "");
-			double lat = 0;
-			double lon = 0;
-			
-			try {
-				lat = Double.parseDouble(loc[1].replace("#", ""));
-			} catch (NumberFormatException e) {
-			}
-			try {
-				lon = Double.parseDouble(loc[2].replace("#", ""));
-			} catch (NumberFormatException e) {
-			}			
+			Object fonteObj = ((Map) part.get("fonte")).get("value");
+			String fonte = fonteObj instanceof String ? (String) fonteObj : "";
 			
 			part = (Map) newJson.get("metadata");
 			
